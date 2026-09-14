@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "======================================"
+echo " Industrial Control Systems Challenge"
+echo "======================================"
+echo
+echo "Welcome to your first ICS challenge!"
+echo
+echo "PLCs are commonly used to control industrial processes."
+echo "Your objective is to retrieve the flag."
+echo
+
+cat /flag
