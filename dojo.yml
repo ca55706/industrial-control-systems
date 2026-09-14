@@ -1,3 +1,12 @@
 id: industrial-control-systems
 name: Industrial Control Systems
 description: Challenges covering security concepts in Industrial Control Systems.
+
+modules:
+  - id: introduction-to-ics
+    name: Introduction to ICS
+    description: Learn the fundamentals of Industrial Control Systems.
+    challenges:
+      - id: ics-basics
+        name: ICS Basics
+        description: Complete an introductory Industrial Control Systems challenge.
