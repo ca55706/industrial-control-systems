@@ -10,3 +10,7 @@ modules:
       - id: ics-basics
         name: ICS Basics
         description: Complete an introductory Industrial Control Systems challenge.
+
+      - id: openplc-register-control
+        name: OpenPLC Register Control
+        description: Read and write PLC registers to activate an industrial process.
