@@ -14,3 +14,8 @@ modules:
       - id: openplc-register-control
         name: OpenPLC Register Control
         description: Read and write PLC registers to activate an industrial process.
+
+
+        - id: plc-safety-interlock
+        name: PLC Safety Interlock
+        description: Analyze PLC registers and satisfy multiple safety conditions to activate an industrial pump.
