@@ -1,1 +1,19 @@
+#!/bin/bash
 
+echo "======================================"
+echo "          PLC Safety Interlock"
+echo "======================================"
+echo
+echo "An industrial pump is controlled by a PLC."
+echo
+echo "Holding Register 0: Pressure"
+echo "Holding Register 1: Temperature"
+echo "Holding Register 2: Safety Switch"
+echo "Holding Register 3: Pump State"
+echo
+echo "Objective:"
+echo "Determine the required operating conditions"
+echo "and activate the industrial pump."
+echo
+
+python3 /challenge/challenge/plc.py
