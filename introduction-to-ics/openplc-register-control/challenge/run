@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "======================================"
+echo "       OpenPLC Register Control"
+echo "======================================"
+echo
+echo "Starting PLC register service..."
+echo
+echo "Holding Register 0: Sensor Value"
+echo "Holding Register 1: Motor State"
+echo
+echo "Objective:"
+echo "Manipulate the sensor register so that the"
+echo "PLC control logic activates the motor."
+echo
+
+python3 /challenge/challenge/plc.py
