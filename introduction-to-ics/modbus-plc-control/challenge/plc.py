@@ -27,16 +27,13 @@ PORT = 1502
 # Register 3 = Pump State
 #
 # Initial values:
-#
 # Tank Level       = 20
 # Temperature      = 85
 # Safety Interlock = 0
 # Pump State       = 0
 #
-# Note:
-# This pymodbus version internally adjusts the
-# datastore address by -1, so the data block starts
-# at address 1.
+# The data block starts at address 1 because this
+# pymodbus version internally adjusts the address.
 #
 
 holding_registers = ModbusSequentialDataBlock(
@@ -65,13 +62,7 @@ async def plc_logic():
 
     while True:
 
-        # Read the four holding registers.
-        #
-        # Internal address 1 = HR0 Tank Level
-        # Internal address 2 = HR1 Temperature
-        # Internal address 3 = HR2 Safety Interlock
-        # Internal address 4 = HR3 Pump State
-
+        # Read HR0-HR3
         values = holding_registers.getValues(
             1,
             count=4
@@ -81,14 +72,10 @@ async def plc_logic():
         temperature = values[1]
         safety = values[2]
 
-        # --------------------------------------------------
-        # PUMP SAFETY CONDITIONS
-        # --------------------------------------------------
-        #
-        # Tank Level:       60 - 90
+        # Pump activation conditions:
+        # Tank Level:       60-90
         # Temperature:      below 70
         # Safety Interlock: ON (1)
-        #
 
         if (
             60 <= tank_level <= 90
@@ -96,20 +83,13 @@ async def plc_logic():
             and safety == 1
         ):
 
-            # All safety conditions are satisfied.
-            # Turn the pump ON.
-            #
-            # Internal address 4 corresponds to HR3.
-
+            # Turn pump ON (HR3)
             holding_registers.setValues(
                 4,
                 [1]
             )
 
-            # Print the flag only once.
-
             if not flag_printed:
-
                 print()
                 print("========================================")
                 print("PUMP ACTIVATED")
@@ -125,30 +105,21 @@ async def plc_logic():
                     print(flag)
 
                 except PermissionError:
-                    print(
-                        "FLAG ERROR: "
-                        "/flag permission denied"
-                    )
+                    print("FLAG ERROR: /flag permission denied")
 
                 except FileNotFoundError:
-                    print(
-                        "FLAG ERROR: "
-                        "/flag does not exist"
-                    )
+                    print("FLAG ERROR: /flag does not exist")
 
                 flag_printed = True
 
         else:
 
-            # One or more safety conditions are not
-            # satisfied. Keep the pump OFF.
-
+            # Keep pump OFF (HR3)
             holding_registers.setValues(
                 4,
                 [0]
             )
 
-        # Check PLC conditions four times per second.
         await asyncio.sleep(0.25)
 
 
@@ -158,11 +129,7 @@ async def plc_logic():
 
 async def main():
 
-    print(
-        f"Modbus TCP server listening "
-        f"on {HOST}:{PORT}"
-    )
-
+    print(f"Modbus TCP server listening on {HOST}:{PORT}")
     print()
     print("Holding Registers:")
     print("HR0 = Tank Level")
@@ -171,22 +138,17 @@ async def main():
     print("HR3 = Pump State")
     print()
 
-    # Run the PLC control logic in the background.
     logic_task = asyncio.create_task(
         plc_logic()
     )
 
     try:
-
-        # Start the Modbus TCP server.
         await StartAsyncTcpServer(
             context=context,
             address=(HOST, PORT)
         )
 
     finally:
-
-        # Stop the PLC logic task when the server exits.
         logic_task.cancel()
 
 
