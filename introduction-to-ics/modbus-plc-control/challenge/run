@@ -1,1 +1,26 @@
+#!/bin/bash
 
+echo "========================================"
+echo "          Modbus PLC Control"
+echo "========================================"
+echo
+echo "A PLC controls an industrial tank pump."
+echo
+echo "Holding Registers:"
+echo "0 - Tank Level"
+echo "1 - Temperature"
+echo "2 - Safety Interlock"
+echo "3 - Pump State"
+echo
+echo "Objective:"
+echo "Use Modbus TCP to inspect and modify"
+echo "the PLC holding registers."
+echo
+echo "Determine the conditions required to"
+echo "activate the industrial pump."
+echo
+echo "Modbus TCP Server:"
+echo "127.0.0.1:1502"
+echo
+
+exec python3 /challenge/challenge/plc.py
