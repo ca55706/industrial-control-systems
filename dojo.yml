@@ -18,3 +18,7 @@ modules:
       - id: plc-safety-interlock
         name: PLC Safety Interlock
         description: Analyze PLC registers and satisfy multiple safety conditions to activate an industrial pump.
+
+      - id: modbus-plc-control
+        name: Modbus PLC Control
+        description: Use Modbus TCP to inspect and modify PLC holding registers to activate an industrial pump.
