@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
 import asyncio
+import sys
+
+sys.path.insert(0, "/challenge/challenge/pymodbus.zip")
 
 from pymodbus.datastore import (
     ModbusSequentialDataBlock,
