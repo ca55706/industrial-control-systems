@@ -35,7 +35,7 @@ PORT = 1502
 #
 
 holding_registers = ModbusSequentialDataBlock(
-    0,
+    1,
     [20, 85, 0, 0] + [0] * 96
 )
 
