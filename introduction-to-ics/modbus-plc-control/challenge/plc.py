@@ -80,7 +80,6 @@ async def plc_logic():
         if (
             60 <= tank_level <= 90
             and temperature < 70
-            and safety == 1
         ):
 
             # Turn pump ON (HR3)
