@@ -1,7 +1,9 @@
+
 #!/bin/bash
 set -e
 
-rm -f /home/hacker/pump-flag
+# Remove any previous flag reward
+rm -rf /run/pump-challenge
 
-python3 /challenge/challenge/server.py \
-    > /tmp/plc.log 2>&1 &
+# Start the Modbus PLC server
+python3 /challenge/server.py > /tmp/plc.log 2>&1 &
