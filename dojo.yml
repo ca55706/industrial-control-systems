@@ -26,7 +26,7 @@ modules:
         description: Use Modbus TCP to inspect and modify PLC holding registers to activate an industrial pump.
 
       - id: modbus-pressure-control
-        name: Modbus PLC Pressure Control
+        name: Modbus Pressure Control
         description: >-
           A simulated industrial pump is controlled by a Programmable
           Logic Controller (PLC) communicating over Modbus TCP.
