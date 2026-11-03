@@ -1,24 +1,44 @@
+
 id: industrial-control-systems
 name: Industrial Control Systems
-description: Challenges covering security concepts in Industrial Control Systems.
+description: Challenges covering fundamental concepts in Industrial Control Systems.
 
 modules:
   - id: introduction-to-ics
     name: Introduction to ICS
     description: Learn the fundamentals of Industrial Control Systems.
+
     challenges:
       - id: ics-basics
         name: ICS Basics
-        description: Complete an introductory Industrial Control Systems challenge.
+        description: Complete an introductory challenge on Industrial Control Systems.
 
       - id: openplc-register-control
         name: OpenPLC Register Control
-        description: Read and write PLC registers to activate an industrial process.
+        description: Read and modify PLC registers to activate an industrial process.
 
       - id: plc-safety-interlock
         name: PLC Safety Interlock
-        description: Analyze PLC registers and satisfy multiple safety conditions to activate an industrial pump.
+        description: Analyze PLC registers and satisfy safety conditions to activate an industrial pump.
 
       - id: modbus-plc-control
         name: Modbus PLC Control
         description: Use Modbus TCP to inspect and modify PLC holding registers to activate an industrial pump.
+
+      - id: modbus-pressure-control
+        name: Modbus PLC Pressure Control
+        description: >-
+          A simulated industrial pump is controlled by a Programmable
+          Logic Controller (PLC) communicating over Modbus TCP.
+
+          The PLC contains two holding registers:
+          HR0 stores the pressure value, initially set to 40,
+          and HR1 represents the pump state, initially set to 0 (OFF).
+
+          The pump will activate when the pressure exceeds 80.
+          Connect to the Modbus TCP server at 127.0.0.1:1502,
+          inspect the holding registers, and modify the pressure
+          using the appropriate Modbus function codes.
+
+          Verify that HR1 changes from 0 (OFF) to 1 (ON)
+          to complete the challenge and obtain the flag.
