@@ -1,1 +1,7 @@
+#!/bin/bash
+set -e
 
+rm -f /home/hacker/pump-flag
+
+python3 /challenge/challenge/server.py \
+    > /tmp/plc.log 2>&1 &
