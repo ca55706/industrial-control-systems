@@ -1,9 +1,8 @@
 #!/bin/bash
 set -e
 
-# Remove previous reward
 rm -rf /run/pump-challenge
 
-# Start the PLC server
-python3 /challenge/challenge/server.py \
+/opt/modbus-venv/bin/python \
+    /challenge/challenge/server.py \
     > /tmp/plc.log 2>&1 &
