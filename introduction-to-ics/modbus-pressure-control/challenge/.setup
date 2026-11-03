@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+
+python3 -m pip install --no-cache-dir pymodbus==3.13.0
