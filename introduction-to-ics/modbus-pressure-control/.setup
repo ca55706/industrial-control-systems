@@ -1,4 +1,11 @@
 #!/bin/bash
 set -e
 
-python3 -m pip install --no-cache-dir pymodbus==3.13.0
+# Create Python virtual environment
+python3 -m venv /opt/modbus-venv
+
+# Install PyModbus
+/opt/modbus-venv/bin/python -m pip install --no-cache-dir pymodbus==3.13.0
+
+# Verify installation
+/opt/modbus-venv/bin/python -c "import pymodbus; print(pymodbus.__version__)"
