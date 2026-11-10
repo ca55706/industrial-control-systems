@@ -1,12 +1,7 @@
 #!/bin/bash
 set -e
 
-cd /challenge/challenge
+export PYTHONPATH=/challenge/challenge/pymodbus.zip
 
-# Extract PyModbus
-unzip -oq pymodbus.zip
-
-# Start Modbus server
-PYTHONPATH=/challenge/challenge \
 python3 /challenge/challenge/server.py \
     > /tmp/plc.log 2>&1 &
