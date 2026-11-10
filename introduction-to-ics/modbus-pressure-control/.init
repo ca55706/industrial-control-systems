@@ -1,9 +1,12 @@
 #!/bin/bash
 set -e
 
-# Remove previous reward
-rm -rf /run/pump-challenge
+cd /challenge/challenge
 
-# Start Modbus TCP server
-/opt/modbus-venv/bin/python /challenge/challenge/server.py \
+# Extract PyModbus
+unzip -oq pymodbus.zip
+
+# Start Modbus server
+PYTHONPATH=/challenge/challenge \
+python3 /challenge/challenge/server.py \
     > /tmp/plc.log 2>&1 &
